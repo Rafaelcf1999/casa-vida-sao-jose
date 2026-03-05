@@ -1,0 +1,47 @@
+ion-content {
+  --background: #ffffff;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 15vh;
+  height: 100%;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+}
+
+.app-title {
+  color: #111111;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 70px;
+  line-height: 1.4;
+}
+
+.input-item {
+  --background: #a3a3a3; 
+  border-radius: 8px;
+  margin-bottom: 20px;
+  --padding-start: 15px; 
+}
+
+.input-item, ion-input {
+  --color: #333333; 
+  --highlight-color-focused: #333333 !important; 
+  --highlight-color-valid: #333333 !important;   
+  --highlight-color-invalid: #333333 !important; 
+}
+
+.login-button {
+  margin-top: 15px;
+  --background: #87ceeb; 
+  color: #333333; 
+  --border-radius: 8px; 
+  font-weight: bold;
+  height: 50px; 
+}
