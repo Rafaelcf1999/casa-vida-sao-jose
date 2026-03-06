@@ -8,11 +8,11 @@
   <ion-searchbar></ion-searchbar>
 
   <ion-list id="container">
-    @for (familia of familiasMock; track familia.nome){
+    @for (familia of familia$ | async; track familia.nome){
     <ion-item id="items" button detail>
       <ion-label>
         <h2>{{familia.nome}}</h2>
-        <p>{{ familia.endereco.rua}}, {{familia.endereco.numero}}</p>
+        <p>{{ familia.rua}}, {{familia.numero}}</p>
       </ion-label>
     </ion-item>
     }

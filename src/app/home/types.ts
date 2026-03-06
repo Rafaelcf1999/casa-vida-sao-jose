@@ -1,13 +1,13 @@
-export type EnderecoFamilia = {
+export type Familia = {
   nome: string;
-  endereco: {
-    cep: string;
-    numero: number;
-    complemento: string;
-    rua: string;
-    cidade: string;
-    estado: string;
-  };
+
+  cep: string;
+  numero: number;
+  complemento: string;
+  rua: string;
+  cidade: string;
+  estado: string;
+
   rendaFamiliar: number;
   cursoCadastrado: boolean;
   apta: boolean;
