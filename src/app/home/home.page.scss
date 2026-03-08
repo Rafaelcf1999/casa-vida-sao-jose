@@ -3,22 +3,118 @@
   min-height: 100%;
 }
 
+ion-content.home-content {
+  --background:
+    radial-gradient(900px 500px at 0% -20%, #d9efe2 0%, transparent 62%),
+    linear-gradient(180deg, #f4f8f5 0%, #e8efe9 45%, #dde6df 100%);
+}
+
+.home-toolbar {
+  --background: rgba(255, 255, 255, 0.72);
+  --border-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+.home-toolbar ion-title {
+  font-weight: 800;
+  color: #12201b;
+}
+
+.home-toolbar ion-button {
+  --color: #12201b;
+}
+
+.home-hero {
+  padding: 12px 16px 4px;
+}
+
+.home-kicker {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #486157;
+  font-weight: 700;
+}
+
+.home-hero h1 {
+  margin: 4px 0 0;
+  font-size: 26px;
+  line-height: 1.15;
+  color: #12201b;
+}
+
+.search-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 8px 12px;
+  backdrop-filter: blur(8px);
+}
+
 ion-searchbar {
-  --background: rgba(255, 255, 255, 0.85);
-  --border-radius: 14px;
-  --box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-  --placeholder-color: #5c6f67;
+  --background: rgba(255, 255, 255, 0.88);
   --color: #13221d;
+  --placeholder-color: #5c6f67;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
-#items {
+
+.familias-list {
   background: transparent;
-  padding: 4px 12px 22px;
+  padding: 4px 12px 24px;
+  
 }
-#content-home {
-  height: 100%;
+.familias-list ion-item {
+  --background: transparent;
 }
-#container {
-  text-align: center;
-  left: 0;
-  right: 0;
+.familia-card {
+  --background: rgba(255, 255, 255, 0.9);
+  --border-radius: 18px;
+  --padding-start: 14px;
+  --inner-padding-end: 14px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(91, 122, 109, 0.18);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 10px 24px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.familia-card h2 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #10201b;
+}
+
+.familia-card p {
+  margin: 2px 0;
+  font-size: 13px;
+  color: #3f554d;
+}
+
+.familia-card[disabled] {
+  opacity: 0.55;
+  filter: grayscale(0.15);
+}
+
+.empty-state {
+  --background: rgba(255, 255, 255, 0.65);
+  --border-radius: 14px;
+  margin-top: 8px;
+}
+.empty-state ion-label {
+  --color: #12201b;
+}
+ion-fab {
+  margin-right: calc(12px + env(safe-area-inset-right));
+  margin-bottom: calc(12px + env(safe-area-inset-bottom));
+}
+
+ion-fab-button {
+  --background: #12201b;
+  --color: #ffffff;
+  --box-shadow: 0 12px 24px rgba(18, 32, 27, 0.28);
+  margin-bottom: 48px;
 }
