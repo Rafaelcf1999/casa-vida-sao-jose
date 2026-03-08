@@ -8,9 +8,19 @@ import {
   IonList,
   IonLabel,
   IonItem,
+  IonIcon,
+  IonFabButton,
+  IonFab,
+  IonButton,
+  IonButtons,
 } from '@ionic/angular/standalone';
 import { FireBaseService } from '../service/familia.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, Location } from '@angular/common';
+
+import { addIcons } from 'ionicons';
+import { add, arrowBack } from 'ionicons/icons';
+import { Router } from '@angular/router';
+import { BehaviorSubject, combineLatest, map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -25,11 +35,47 @@ import { AsyncPipe } from '@angular/common';
     IonList,
     IonLabel,
     IonItem,
+    IonIcon,
+    IonFabButton,
+    IonFab,
     AsyncPipe,
+    IonButton,
+    IonButtons,
   ],
 })
 export class HomePage {
+  constructor(private readonly router: Router) {
+    addIcons({ add, arrowBack });
+  }
+
+  location = inject(Location);
   familiaService = inject(FireBaseService);
-  familia$ = this.familiaService.getFamilias()
-  constructor() {}
+  readonly familias$ = this.familiaService.getFamilias();
+  private readonly termoBusca$ = new BehaviorSubject<string>('');
+
+  readonly familiasFiltradas$ = combineLatest([
+    this.familias$,
+    this.termoBusca$,
+  ]).pipe(
+    map(([familias, termo]) => {
+      const t = termo.trim();
+      if (!t) return familias;
+      return familias.filter(
+        (f) =>
+          f.documento.includes(t) || f.nome.includes(t) || f.rua.includes(t),
+      );
+    }),
+  );
+
+  redirecionar(nextPage: string): void {
+    this.router.navigateByUrl(`${nextPage}`);
+  }
+  voltar() {
+    this.location.back();
+  }
+
+  filtrarFamilias(event: any) {
+    const EventValue = event.target.value?.trim();
+    this.termoBusca$.next(EventValue);
+  }
 }

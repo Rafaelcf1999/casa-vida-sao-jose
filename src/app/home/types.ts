@@ -7,7 +7,7 @@ export type Familia = {
   rua: string;
   cidade: string;
   estado: string;
-
+  documento: string;
   rendaFamiliar: number;
   cursoCadastrado: boolean;
   apta: boolean;
