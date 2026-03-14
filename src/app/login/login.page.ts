@@ -23,6 +23,7 @@ export class LoginPage implements OnInit {
     if (this.usuario === 'admin' && this.senha === 'admin') {
       alert('Login efetuado com sucesso!');
       console.log('Login efetuado com sucesso no Sistema Santa Hedviges!');
+      this.router.navigate(['/home']);
     } else {
       alert('Usuário ou senha incorretos. Tente novamente!');
     }

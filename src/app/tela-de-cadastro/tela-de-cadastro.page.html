@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de Família</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Dados do Responsável -->
+  <ion-list-header><ion-label>Dados do Responsável</ion-label></ion-list-header>
+  
+  <ion-item>
+    <ion-label position="floating">Nome Completo</ion-label>
+    <ion-input type="text" [(ngModel)]="cadastro.nome"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">CPF</ion-label>
+    <ion-input type="text" placeholder="000.000.000-00" [(ngModel)]="cadastro.cpf"></ion-input>
+  </ion-item>
+
+  <!-- Endereço com busca por CEP -->
+  <ion-list-header><ion-label>Endereço</ion-label></ion-list-header>
+  
+  <ion-item>
+    <ion-label position="floating">CEP</ion-label>
+    <ion-input type="text" (ionBlur)="buscarCEP()" [(ngModel)]="cadastro.cep" placeholder="Aperte fora para buscar"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Logradouro (Rua/Av)</ion-label>
+    <ion-input type="text" [(ngModel)]="cadastro.rua"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Bairro</ion-label>
+    <ion-input type="text" [(ngModel)]="cadastro.bairro"></ion-input>
+  </ion-item>
+
+  <!-- Composição Familiar -->
+  <ion-list-header><ion-label>Composição Familiar</ion-label></ion-list-header>
+  
+  <ion-item>
+    <ion-label>Cônjuge (Marido/Esposa)</ion-label>
+    <ion-toggle slot="end" [(ngModel)]="cadastro.temConjuge"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Quantidade de Filhos</ion-label>
+    <ion-input type="number" [(ngModel)]="cadastro.qtdFilhos"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="success" class="ion-margin-top" (click)="salvar()">
+    Finalizar Cadastro
+  </ion-button>
+</ion-content>
