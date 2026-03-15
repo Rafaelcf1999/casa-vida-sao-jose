@@ -68,6 +68,7 @@ O sistema deve utilizar variáveis e identificadores em português (pt-BR).
     numero: number;
     complemento: string;
     rua: string;
+    bairro: string;
     cidade: string;
     estado: string;
   };
