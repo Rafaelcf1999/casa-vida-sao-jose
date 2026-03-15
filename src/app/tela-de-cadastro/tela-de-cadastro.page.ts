@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
+import {FireBaseService } from '../service/familia.service';
+import { Router } from '@angular/router';
 import { 
   IonContent, IonHeader, IonTitle, IonToolbar, 
   IonButtons, IonBackButton, IonItem, IonLabel, 
@@ -21,22 +23,28 @@ import {
     CommonModule, FormsModule 
   ]
 })
+
 export class TelaDeCadastroPage implements OnInit {
+
+  private firebaseService = inject(FireBaseService);
+  private router = inject(Router);
 
   // Objeto que armazena os dados do formulário
   cadastro = {
     nome: '',
     documento: '',
-    rendaFamiliar: '',
+    rendaFamiliar: 0,
     cursoCadastrado: false,
     cep: '',
     rua: '',
-    numero: '',
+    numero: 0,
     bairro: '',
+    complemento: '',
     cidade: '',
     estado: '',
     temConjuge: false,
-    qtdFilhos: 0
+    qtdFilhos: 0,
+    apta: true,
   };
 
   constructor() { }
@@ -70,8 +78,24 @@ export class TelaDeCadastroPage implements OnInit {
     }
   }
 }
-  salvar() {
-    console.log('Dados da família:', this.cadastro);
-    alert('Cadastro realizado com sucesso!');
+
+async salvar() {
+  try {
+    // 1. Mostra no console para você conferir se o 'bairro' e outros estão indo
+    console.log('Tentando salvar:', this.cadastro);
+
+    // 2. Chama o serviço que envia para o Firestore
+    await this.firebaseService.addFamilia(this.cadastro);
+
+    // 3. Se deu certo, avisa o usuário
+    alert('Família cadastrada com sucesso!');
+
+    // 4. Limpa o formulário ou volta para a lista
+    this.router.navigate(['/home']); 
+
+  } catch (error) {
+    console.error('Erro ao salvar no Firebase:', error);
+    alert('Houve um erro ao salvar. Verifique sua conexão.');
   }
+}
 }
