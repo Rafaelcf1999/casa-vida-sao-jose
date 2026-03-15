@@ -12,59 +12,64 @@
   <ion-list-header>
     <ion-label>Dados do Responsável</ion-label>
   </ion-list-header>
-  
+
   <ion-item class="custom-item">
-    <ion-input 
-      label="Nome Completo" 
-      label-placement="floating" 
-      type="text" 
-      [(ngModel)]="cadastro.nome">
+    <ion-input label="Nome Completo" label-placement="floating" type="text" [(ngModel)]="cadastro.nome">
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input 
-      label="CPF" 
-      label-placement="floating" 
-      type="text" 
-      placeholder="000.000.000-00" 
-      maxlength="14"
-      [(ngModel)]="cadastro.cpf">
+    <ion-input label="CPF" label-placement="floating" type="text" placeholder="000.000.000-00" maxlength="14"
+      [(ngModel)]="cadastro.documento">
     </ion-input>
   </ion-item>
+
+   <ion-item class="custom-item">
+    <ion-input label="Renda Familiar" label-placement="floating" type="number" [(ngModel)]="cadastro.rendaFamiliar">
+    </ion-input>
+  </ion-item>
+
+   <ion-item class="custom-item">
+  <ion-label>Curso Cadastrado?</ion-label>
+  <ion-toggle 
+    slot="end" 
+    [(ngModel)]="cadastro.cursoCadastrado">
+  </ion-toggle>
+</ion-item>
 
   <!-- Endereço -->
   <ion-list-header>
     <ion-label>Endereço</ion-label>
   </ion-list-header>
-  
+
   <ion-item class="custom-item cep-highlight">
-    <ion-input 
-      label="CEP" 
-      label-placement="floating" 
-      type="text" 
-      placeholder="Digite para buscar"
-      maxlength="9"
-      (ionBlur)="buscarCEP()" 
-      [(ngModel)]="cadastro.cep">
+    <ion-input label="CEP" label-placement="floating" type="text" placeholder="Digite para buscar" maxlength="9"
+      (ionBlur)="buscarCEP()" [(ngModel)]="cadastro.cep">
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input 
-      label="Logradouro (Rua/Av)" 
-      label-placement="floating" 
-      type="text" 
-      [(ngModel)]="cadastro.rua">
+    <ion-input label="Logradouro (Rua/Av)" label-placement="floating" type="text" [(ngModel)]="cadastro.rua">
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input 
-      label="Bairro" 
-      label-placement="floating" 
-      type="text" 
-      [(ngModel)]="cadastro.bairro">
+    <ion-input label="Número" label-placement="floating" type="number" [(ngModel)]="cadastro.numero">
+    </ion-input>
+  </ion-item>
+
+  <ion-item class="custom-item">
+    <ion-input label="Bairro" label-placement="floating" type="text" [(ngModel)]="cadastro.bairro">
+    </ion-input>
+  </ion-item>
+
+  <ion-item class="custom-item">
+    <ion-input label="Cidade" label-placement="floating" type="text" [(ngModel)]="cadastro.cidade">
+    </ion-input>
+  </ion-item>
+
+  <ion-item class="custom-item">
+    <ion-input label="Estado" label-placement="floating" type="text" [(ngModel)]="cadastro.estado">
     </ion-input>
   </ion-item>
 
@@ -72,18 +77,14 @@
   <ion-list-header>
     <ion-label>Composição Familiar</ion-label>
   </ion-list-header>
-  
+
   <ion-item class="custom-item">
     <ion-label>Cônjuge (Marido/Esposa)</ion-label>
     <ion-toggle slot="end" [(ngModel)]="cadastro.temConjuge"></ion-toggle>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input 
-      label="Quantidade de Filhos" 
-      label-placement="floating" 
-      type="number" 
-      [(ngModel)]="cadastro.qtdFilhos">
+    <ion-input label="Quantidade de Filhos" label-placement="floating" type="number" [(ngModel)]="cadastro.qtdFilhos">
     </ion-input>
   </ion-item>
 

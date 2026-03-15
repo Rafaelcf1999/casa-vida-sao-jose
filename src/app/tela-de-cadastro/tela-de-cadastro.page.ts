@@ -26,10 +26,15 @@ export class TelaDeCadastroPage implements OnInit {
   // Objeto que armazena os dados do formulário
   cadastro = {
     nome: '',
-    cpf: '',
+    documento: '',
+    rendaFamiliar: '',
+    cursoCadastrado: false,
     cep: '',
     rua: '',
+    numero: '',
     bairro: '',
+    cidade: '',
+    estado: '',
     temConjuge: false,
     qtdFilhos: 0
   };
@@ -54,6 +59,8 @@ export class TelaDeCadastroPage implements OnInit {
       if (!dados.erro) {
         this.cadastro.rua = dados.logradouro;
         this.cadastro.bairro = dados.bairro;
+        this.cadastro.cidade = dados.localidade;
+        this.cadastro.estado = dados.uf;
       } else {
         alert('CEP não encontrado!');
       }

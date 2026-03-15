@@ -5,6 +5,7 @@ export type Familia = {
   numero: number;
   complemento: string;
   rua: string;
+  bairro: string;
   cidade: string;
   estado: string;
   documento: string;
