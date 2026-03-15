@@ -1,3 +1,11 @@
+
+ion-content {
+  --background: #ffffff; 
+}
+
+ion-list {
+  background: #ffffff;
+}
 // Títulos das seções
 ion-list-header {
   --color: var(--ion-color-primary);
@@ -7,14 +15,26 @@ ion-list-header {
   margin-bottom: 5px;
   letter-spacing: 0.5px;
 }
+ion-item-divider {
+  background-color: #ffffff;
+  --inner-border-width: 0; 
+  --border-width: 0;      
+  border: none;            
+  background: transparent; 
+}
 
 // Estilo dos campos de entrada
 .custom-item {
-  --background: #515151;
+  --background: #CBCBCB;
+  --color: #515151;
   --border-radius: 12px;
   --padding-start: 16px;
   margin-bottom: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  --highlight-height: 0;         
+  --inner-border-width: 0;       
+  --border-width: 0;
   
   // Remove a linha padrão do Ionic que fica embaixo
   &::part(native) {
@@ -25,7 +45,7 @@ ion-list-header {
 // Destaque visual para o campo de CEP
 .cep-highlight {
   border: 1px solid var(--ion-color-primary-shade);
-  --background: #515151;
+  --background: #cbcbcb;
 }
 
 // Botão de finalizar

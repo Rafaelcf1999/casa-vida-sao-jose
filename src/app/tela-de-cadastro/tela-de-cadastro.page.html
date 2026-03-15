@@ -75,19 +75,67 @@
 
   <!-- Composição Familiar -->
   <ion-list-header>
-    <ion-label>Composição Familiar</ion-label>
+    <ion-label>Dependentes</ion-label>
   </ion-list-header>
 
-  <ion-item class="custom-item">
-    <ion-label>Cônjuge (Marido/Esposa)</ion-label>
-    <ion-toggle slot="end" [(ngModel)]="cadastro.temConjuge"></ion-toggle>
-  </ion-item>
+ @for (dep of cadastro.dependentes; track $index) {
+    <div class="dependente-container">
+      <ion-item-divider>
+        <ion-label>Dependente {{ $index + 1 }}</ion-label>
+      </ion-item-divider>
 
-  <ion-item class="custom-item">
-    <ion-input label="Quantidade de Filhos" label-placement="floating" type="number" [(ngModel)]="cadastro.qtdFilhos">
-    </ion-input>
-  </ion-item>
+      <ion-item class="custom-item">
+        <ion-select 
+          label="Parentesco" 
+          label-placement="floating" 
+          placeholder="Selecione"
+          [(ngModel)]="dep.tipo"> 
+          <ion-select-option value="Cônjuge">Cônjuge</ion-select-option>
+          <ion-select-option value="Filho(a)">Filho(a)</ion-select-option>
+          <ion-select-option value="Outro">Outro</ion-select-option>
+        </ion-select>
+      </ion-item>
 
+      @if (dep.tipo === 'Outro') {
+        <ion-item class="custom-item">
+          <ion-input 
+            label="Especifique o parentesco" 
+            label-placement="floating" 
+            type="text" 
+            [(ngModel)]="dep.tipoOutro">
+          </ion-input>
+        </ion-item>
+      }
+
+      <ion-item class="custom-item">
+        <ion-input label="Nome" label-placement="floating" type="text" [(ngModel)]="dep.nome">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="custom-item">
+        <ion-input label="CPF" label-placement="floating" type="text" placeholder="000.000.000-00" [(ngModel)]="dep.cpf">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="custom-item">
+        <ion-input label="Telefone" label-placement="floating" type="tel" placeholder="(00) 00000-0000" [(ngModel)]="dep.telefone">
+        </ion-input>
+      </ion-item>
+
+      <div class="remover-container">
+      <ion-button fill="clear" color="danger" (click)="removeDependente($index)">
+        <ion-icon name="remove-circle-outline" slot="start"></ion-icon>
+        Remover este dependente
+      </ion-button>
+    </div>
+      
+    </div>
+  }
+
+  <ion-button expand="block" fill="outline" (click)="addDependente()" class="ion-margin-top">
+    <ion-icon name="add-outline" slot="start"></ion-icon>
+    Adicionar Dependente
+  </ion-button>
   <ion-button expand="block" color="success" class="btn-finalizar" (click)="salvar()">
     Finalizar Cadastro
   </ion-button>

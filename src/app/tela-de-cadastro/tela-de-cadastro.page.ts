@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { 
   IonContent, IonHeader, IonTitle, IonToolbar, 
   IonButtons, IonBackButton, IonItem, IonLabel, 
-  IonInput, IonListHeader, IonButton, IonIcon,
-  IonSelect, IonSelectOption, IonToggle, IonTextarea, IonList
+  IonInput, IonListHeader, IonButton, IonIcon, IonItemDivider,
+  IonSelect, IonSelectOption, IonToggle, IonTextarea, IonList, IonFab, IonFabButton
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -18,8 +18,8 @@ import {
   imports: [
     IonContent, IonHeader, IonTitle, IonToolbar, 
     IonButtons, IonBackButton, IonItem, IonLabel, 
-    IonInput, IonListHeader, IonButton, IonIcon,
-    IonSelect, IonSelectOption, IonToggle, IonTextarea, IonList,
+    IonInput, IonListHeader, IonButton, IonIcon, IonItemDivider,
+    IonSelect, IonSelectOption, IonToggle, IonTextarea, IonList, IonFab, IonFabButton,
     CommonModule, FormsModule 
   ]
 })
@@ -32,6 +32,7 @@ export class TelaDeCadastroPage implements OnInit {
   // Objeto que armazena os dados do formulário
   cadastro = {
     nome: '',
+    telefone: '',
     documento: '',
     rendaFamiliar: 0,
     cursoCadastrado: false,
@@ -42,8 +43,7 @@ export class TelaDeCadastroPage implements OnInit {
     complemento: '',
     cidade: '',
     estado: '',
-    temConjuge: false,
-    qtdFilhos: 0,
+    dependentes: [] as any[],
     apta: true,
   };
 
@@ -51,6 +51,15 @@ export class TelaDeCadastroPage implements OnInit {
 
   ngOnInit() { }
 
+  addDependente() {
+    this.cadastro.dependentes.push({
+      tipo: '',
+      tipoOutro: '',
+      nome: '',
+      cpf: '',
+      telefone: ''
+    });
+  }
   // Função para buscar o endereço automaticamente pelo CEP
   async buscarCEP() {
   // 1. Limpa o CEP para ter apenas números
@@ -79,18 +88,16 @@ export class TelaDeCadastroPage implements OnInit {
   }
 }
 
+removeDependente(index: number){
+  this.cadastro.dependentes.splice(index, 1);
+}
+
 async salvar() {
   try {
-    // 1. Mostra no console para você conferir se o 'bairro' e outros estão indo
-    console.log('Tentando salvar:', this.cadastro);
-
-    // 2. Chama o serviço que envia para o Firestore
     await this.firebaseService.addFamilia(this.cadastro);
 
-    // 3. Se deu certo, avisa o usuário
     alert('Família cadastrada com sucesso!');
 
-    // 4. Limpa o formulário ou volta para a lista
     this.router.navigate(['/home']); 
 
   } catch (error) {
