@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { collectionData, Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Familia } from '../home/types';
+import { doc, getDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class FireBaseService {
   constructor() {}
   getFamilias(): Observable<Familia[]> {
     const colRef = collection(this.firestore, 'familia');
-    return collectionData(colRef) as Observable<Familia[]>;
+    return collectionData(colRef, { idField: 'id' }) as Observable<Familia[]>;
   }
 
   async addFamilia(dadosDaFamilia: Familia) {
@@ -29,4 +30,21 @@ export class FireBaseService {
       throw e;
     }
   }
+
+  async getFamiliaById(id: string): Promise<Familia | undefined> {
+  try {
+    const docRef = doc(this.firestore, 'familia', id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data() as Familia;
+    } else {
+      console.log("Nenhum documento encontrado!");
+      return undefined;
+    }
+  } catch (error) {
+    console.error("Erro ao buscar família:", error);
+    throw error;
+  }
+}
 }

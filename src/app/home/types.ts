@@ -1,4 +1,5 @@
 export type Familia = {
+  id?: string;
   nome: string;
   telefone: string;
   cep: string;
@@ -17,7 +18,7 @@ export type Familia = {
 
 export type Dependente = {
   tipo: string;
-  tipoOutro: string;
+  tipoOutro?: string;
   nome: string;
   cpf: string;
   telefone: string;

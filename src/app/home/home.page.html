@@ -21,9 +21,9 @@
   </div>
 
   <ion-list class="familias-list">
-    @for (familia of familiasFiltradas$ | async; track familia.nome) {
-    <ion-item class="familia-card" button detail [disabled]="!familia.apta" (click)="redirecionar('login')"
-      (keydown.enter)="redirecionar('login')" lines="none">
+    @for (familia of familiasFiltradas$ | async; track familia.id) {
+    <ion-item class="familia-card" button detail [disabled]="!familia.apta" (click)="viewDetails(familia.id!)"
+      (keydown.enter)="viewDetails(familia.id!)" lines="none">
       <ion-label>
         <h2>{{ familia.nome }}</h2>
         <p>{{ familia.rua }}, {{ familia.numero }}</p>
