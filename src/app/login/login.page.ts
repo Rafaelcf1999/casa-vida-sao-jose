@@ -4,6 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+/* Importando as ferramentas de ícones */
+import { addIcons } from 'ionicons';
+import { peopleOutline } from 'ionicons/icons';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,14 +19,17 @@ export class LoginPage implements OnInit {
   usuario = '';
   senha = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    // Registrando o ícone para ele aparecer na tela
+    addIcons({ peopleOutline });
+  }
 
   ngOnInit() { }
 
   fazerLogin() {
     if (this.usuario === 'admin' && this.senha === 'admin') {
-      alert('Login efetuado com sucesso!');
       console.log('Login efetuado com sucesso no Sistema Santa Hedviges!');
+      this.router.navigate(['/home']); 
     } else {
       alert('Usuário ou senha incorretos. Tente novamente!');
     }

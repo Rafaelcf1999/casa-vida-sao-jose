@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border header-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="" class="back-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">Registrar Entrega</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-bg">
+  <div class="main-container">
+    <div class="form-section">
+      
+      <div class="input-group">
+        <label>Data da Entrega</label>
+        <input type="date" [(ngModel)]="dataEntrega" class="custom-input">
+        <p class="helper-text">Informe a data em que a entrega foi realizada.</p>
+      </div>
+
+      <div class="input-group">
+        <label>Programar Entrega Futura (Opcional)</label>
+        <input type="date" [(ngModel)]="dataFutura" class="custom-input">
+        <p class="helper-text">Agende a próxima data prevista para auxílio.</p>
+      </div>
+
+      <div class="input-group">
+        <label>Observações</label>
+        <textarea rows="6" [(ngModel)]="observacoes" class="custom-input no-resize" placeholder="Digite detalhes sobre a entrega, itens fornecidos ou necessidades específicas da família..."></textarea>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border footer-section">
+  <div class="footer-container">
+    <button class="btn-confirmar" (click)="confirmarRegistro()">Confirmar Registro</button>
+  </div>
+</ion-footer>
