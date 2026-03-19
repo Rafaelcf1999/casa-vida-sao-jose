@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Informações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (familia) {
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ familia.nome }}</ion-card-title>
+        <ion-card-subtitle>CPF: {{ familia.documento }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p><strong>Renda:</strong> {{ familia.rendaFamiliar | currency:'BRL' }}</p>
+        <p><strong>Endereço:</strong> {{ familia.rua }}, {{ familia.numero }} - {{ familia.bairro }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list-header>Dependentes</ion-list-header>
+    @for (dep of familia.dependentes; track $index) {
+      <ion-item>
+        <ion-label>
+          <h2>{{ dep.nome }}</h2>
+          <p>{{ dep.tipo }} - CPF: {{ dep.cpf }}</p>
+        </ion-label>
+      </ion-item>
+    }
+
+    <div class="button-container">
+      <ion-button expand="block" color="success" class="btn-entrega" (click)="realizarEntrega()">
+        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+        Realizar Entrega
+      </ion-button>
+    </div>
+  } @else {
+    <ion-spinner></ion-spinner> }
+</ion-content>

@@ -20,6 +20,7 @@ import { AsyncPipe, Location } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { add, arrowBack } from 'ionicons/icons';
 import { Router } from '@angular/router';
+
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 
 @Component({
@@ -58,14 +59,20 @@ export class HomePage {
     this.termoBusca$,
   ]).pipe(
     map(([familias, termo]) => {
-      const t = termo.trim();
+      const t = termo.trim().toLocaleLowerCase();
       if (!t) return familias;
       return familias.filter(
         (f) =>
-          f.documento.includes(t) || f.nome.includes(t) || f.rua.includes(t),
+          f.documento.includes(t) || f.nome.toLocaleLowerCase().includes(t) || f.rua.toLocaleLowerCase().includes(t),
       );
     }),
   );
+
+  viewDetails(id: string) {
+    if (id) {
+      this.router.navigate(['/info-family', id]);
+    }
+  }
 
   redirecionar(nextPage: string): void {
     this.router.navigateByUrl(`${nextPage}`);

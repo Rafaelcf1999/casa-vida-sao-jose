@@ -16,23 +16,14 @@
   </section>
 
   <div class="search-wrap">
-    <ion-searchbar
-      placeholder="Procurar famílias (nome, rua, cidade)"
-      (ionInput)="filtrarFamilias($event)"
-    ></ion-searchbar>
+    <ion-searchbar placeholder="Procurar famílias (nome, rua, cidade)"
+      (ionInput)="filtrarFamilias($event)"></ion-searchbar>
   </div>
 
   <ion-list class="familias-list">
-    @for (familia of familiasFiltradas$ | async; track familia.nome) {
-    <ion-item
-      class="familia-card"
-      button
-      detail
-      [disabled]="!familia.apta"
-      (click)="redirecionar('login')"
-      (keydown.enter)="redirecionar('login')"
-      lines="none"
-    >
+    @for (familia of familiasFiltradas$ | async; track familia.id) {
+    <ion-item class="familia-card" button detail [disabled]="!familia.apta" (click)="viewDetails(familia.id!)"
+      (keydown.enter)="viewDetails(familia.id!)" lines="none">
       <ion-label>
         <h2>{{ familia.nome }}</h2>
         <p>{{ familia.rua }}, {{ familia.numero }}</p>
@@ -47,10 +38,7 @@
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button
-      (click)="redirecionar('login')"
-      (keydown.enter)="redirecionar('login')"
-    >
+    <ion-fab-button (click)="redirecionar('tela-de-cadastro')" (keydown.enter)="redirecionar('tela-de-cadastro')">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -14,4 +14,13 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
   },
+  {
+    path: 'tela-de-cadastro',
+    loadComponent: () => import('./tela-de-cadastro/tela-de-cadastro.page').then( m => m.TelaDeCadastroPage)
+  },
+  {
+    path: 'info-family/:id',
+    loadComponent: () => import('./info-family/info-family.page').then( m => m.InfoFamilyPage)
+  },
+
 ];
