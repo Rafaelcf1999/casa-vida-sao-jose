@@ -1,29 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="home-toolbar">
-    <ion-buttons slot="start">
-      <ion-button fill="clear" (click)="voltar()" (keydown.enter)="voltar()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title as="h1">Famílias Cadastradas</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-navbar>
+  <div navbarSearch class="search-wrap">
+    <ion-searchbar
+      placeholder="Procurar famílias"
+      (ionInput)="filtrarFamilias($event)"
+    ></ion-searchbar>
+  </div>
+</app-navbar>
 
 <ion-content [fullscreen]="true" class="home-content">
-  <section class="home-hero">
-    <p class="home-kicker">Painel Social</p>
-    <h1>Gestão de Famílias</h1>
-  </section>
-
-  <div class="search-wrap">
-    <ion-searchbar placeholder="Procurar famílias (nome, rua, cidade)"
-      (ionInput)="filtrarFamilias($event)"></ion-searchbar>
-  </div>
-
   <ion-list class="familias-list">
     @for (familia of familiasFiltradas$ | async; track familia.id) {
-    <ion-item class="familia-card" button detail [disabled]="!familia.apta" (click)="viewDetails(familia.id!)"
-      (keydown.enter)="viewDetails(familia.id!)" lines="none">
+    <ion-item
+      class="familia-card"
+      button
+      detail
+      [disabled]="!familia.apta"
+      (click)="viewDetails(familia.id!)"
+      (keydown.enter)="viewDetails(familia.id!)"
+      lines="none"
+    >
       <ion-label>
         <h2>{{ familia.nome }}</h2>
         <p>{{ familia.rua }}, {{ familia.numero }}</p>
@@ -38,7 +33,10 @@
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="redirecionar('tela-de-cadastro')" (keydown.enter)="redirecionar('tela-de-cadastro')">
+    <ion-fab-button
+      (click)="redirecionar('tela-de-cadastro')"
+      (keydown.enter)="redirecionar('tela-de-cadastro')"
+    >
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

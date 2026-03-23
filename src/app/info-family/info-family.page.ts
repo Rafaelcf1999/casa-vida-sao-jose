@@ -4,33 +4,56 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { FireBaseService } from '../service/familia.service';
-import { IonContent, IonHeader, IonTitle, IonToolbar, 
-  IonButtons, IonBackButton, IonSpinner, 
-  IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent,
-  IonListHeader, IonItem, IonLabel, IonButton, IonIcon } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonTitle,
+  IonSpinner,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonCardContent,
+  IonListHeader,
+  IonItem,
+  IonLabel,
+  IonButton,
+  IonIcon,
+} from '@ionic/angular/standalone';
+import { NavbarComponent } from '../components/navbar.component';
 
 @Component({
   selector: 'app-info-family',
   templateUrl: './info-family.page.html',
   styleUrls: ['./info-family.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, 
-  IonButtons, IonBackButton, IonSpinner, 
-  IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent,
-  IonListHeader, IonItem, IonLabel, CommonModule, IonButton, IonIcon,
+  imports: [
+    IonContent,
+    IonTitle,
+    IonSpinner,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonCardContent,
+    IonListHeader,
+    IonItem,
+    IonLabel,
+    CommonModule,
+    IonButton,
+    IonIcon,
     FormsModule,
-    CurrencyPipe]
+    CurrencyPipe,
+    NavbarComponent,
+  ],
 })
 export class InfoFamilyPage implements OnInit {
-
   private route = inject(ActivatedRoute);
   private fbService = inject(FireBaseService);
 
   id: string | null = null;
   familia: any = null; // Aqui ficarão os dados vindos do Firebase
 
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     // Pega o ID da URL
@@ -45,7 +68,7 @@ export class InfoFamilyPage implements OnInit {
       if (this.id) {
         // Chamamos o service e aguardamos (await) a resposta
         this.familia = await this.fbService.getFamiliaById(this.id);
-        
+
         // Log para você conferir no console se os dependentes vieram junto
         console.log('Dados da família carregados:', this.familia);
       }
@@ -53,7 +76,6 @@ export class InfoFamilyPage implements OnInit {
       console.error('Erro ao carregar dados da família:', error);
 
       alert('Erro ao carregar as informações.');
-  
     }
   }
 

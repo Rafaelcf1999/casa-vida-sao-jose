@@ -1,14 +1,23 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
-import {FireBaseService } from '../service/familia.service';
+import { FormsModule } from '@angular/forms';
+import { FireBaseService } from '../service/familia.service';
 import { Router } from '@angular/router';
-import { 
-  IonContent, IonHeader, IonTitle, IonToolbar, 
-  IonButtons, IonBackButton, IonItem, IonLabel, 
-  IonInput, IonListHeader, IonButton, IonIcon, IonItemDivider,
-  IonSelect, IonSelectOption, IonToggle, IonTextarea, IonList, IonFab, IonFabButton
+import {
+  IonContent,
+  IonTitle,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonListHeader,
+  IonButton,
+  IonIcon,
+  IonItemDivider,
+  IonSelect,
+  IonSelectOption,
+  IonToggle,
 } from '@ionic/angular/standalone';
+import { NavbarComponent } from '../components/navbar.component';
 
 @Component({
   selector: 'app-tela-de-cadastro',
@@ -16,16 +25,24 @@ import {
   styleUrls: ['./tela-de-cadastro.page.scss'],
   standalone: true,
   imports: [
-    IonContent, IonHeader, IonTitle, IonToolbar, 
-    IonButtons, IonBackButton, IonItem, IonLabel, 
-    IonInput, IonListHeader, IonButton, IonIcon, IonItemDivider,
-    IonSelect, IonSelectOption, IonToggle, IonTextarea, IonList, IonFab, IonFabButton,
-    CommonModule, FormsModule 
-  ]
+    IonContent,
+    IonTitle,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonListHeader,
+    IonButton,
+    IonIcon,
+    IonItemDivider,
+    IonSelect,
+    IonSelectOption,
+    IonToggle,
+    CommonModule,
+    FormsModule,
+    NavbarComponent,
+  ],
 })
-
 export class TelaDeCadastroPage implements OnInit {
-
   private firebaseService = inject(FireBaseService);
   private router = inject(Router);
 
@@ -47,9 +64,9 @@ export class TelaDeCadastroPage implements OnInit {
     apta: true,
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   addDependente() {
     this.cadastro.dependentes.push({
@@ -57,52 +74,51 @@ export class TelaDeCadastroPage implements OnInit {
       tipoOutro: '',
       nome: '',
       cpf: '',
-      telefone: ''
+      telefone: '',
     });
   }
   // Função para buscar o endereço automaticamente pelo CEP
   async buscarCEP() {
-  // 1. Limpa o CEP para ter apenas números
-  const cepLimpo = this.cadastro.cep.replace(/\D/g, ''); 
-  
-  if (cepLimpo.length === 8) {
-    try {
-      // 2. CORREÇÃO DA URL: Precisa das crases ( ` ) e do caminho /ws/
-      const url = `https://viacep.com.br/ws/${cepLimpo}/json/`;
-      
-      const resposta = await fetch(url);
-      const dados = await resposta.json();
-      
-      if (!dados.erro) {
-        this.cadastro.rua = dados.logradouro;
-        this.cadastro.bairro = dados.bairro;
-        this.cadastro.cidade = dados.localidade;
-        this.cadastro.estado = dados.uf;
-      } else {
-        alert('CEP não encontrado!');
+    // 1. Limpa o CEP para ter apenas números
+    const cepLimpo = this.cadastro.cep.replace(/\D/g, '');
+
+    if (cepLimpo.length === 8) {
+      try {
+        // 2. CORREÇÃO DA URL: Precisa das crases ( ` ) e do caminho /ws/
+        const url = `https://viacep.com.br/ws/${cepLimpo}/json/`;
+
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+
+        if (!dados.erro) {
+          this.cadastro.rua = dados.logradouro;
+          this.cadastro.bairro = dados.bairro;
+          this.cadastro.cidade = dados.localidade;
+          this.cadastro.estado = dados.uf;
+        } else {
+          alert('CEP não encontrado!');
+        }
+      } catch (error) {
+        console.error('Erro ao buscar o CEP:', error);
+        alert('Não foi possível conectar ao serviço de busca de CEP.');
       }
-    } catch (error) {
-      console.error('Erro ao buscar o CEP:', error);
-      alert('Não foi possível conectar ao serviço de busca de CEP.');
     }
   }
-}
 
-removeDependente(index: number){
-  this.cadastro.dependentes.splice(index, 1);
-}
-
-async salvar() {
-  try {
-    await this.firebaseService.addFamilia(this.cadastro);
-
-    alert('Família cadastrada com sucesso!');
-
-    this.router.navigate(['/home']); 
-
-  } catch (error) {
-    console.error('Erro ao salvar no Firebase:', error);
-    alert('Houve um erro ao salvar. Verifique sua conexão.');
+  removeDependente(index: number) {
+    this.cadastro.dependentes.splice(index, 1);
   }
-}
+
+  async salvar() {
+    try {
+      await this.firebaseService.addFamilia(this.cadastro);
+
+      alert('Família cadastrada com sucesso!');
+
+      this.router.navigate(['/home']);
+    } catch (error) {
+      console.error('Erro ao salvar no Firebase:', error);
+      alert('Houve um erro ao salvar. Verifique sua conexão.');
+    }
+  }
 }

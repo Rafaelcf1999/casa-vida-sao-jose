@@ -1,8 +1,5 @@
 import { Component, inject } from '@angular/core';
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
   IonSearchbar,
   IonList,
@@ -11,8 +8,6 @@ import {
   IonIcon,
   IonFabButton,
   IonFab,
-  IonButton,
-  IonButtons,
 } from '@ionic/angular/standalone';
 import { FireBaseService } from '../service/familia.service';
 import { AsyncPipe, Location } from '@angular/common';
@@ -22,15 +17,13 @@ import { add, arrowBack } from 'ionicons/icons';
 import { Router } from '@angular/router';
 
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
+import { NavbarComponent } from '../components/navbar.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonSearchbar,
     IonList,
@@ -40,8 +33,7 @@ import { BehaviorSubject, combineLatest, map } from 'rxjs';
     IonFabButton,
     IonFab,
     AsyncPipe,
-    IonButton,
-    IonButtons,
+    NavbarComponent,
   ],
 })
 export class HomePage {
@@ -63,7 +55,9 @@ export class HomePage {
       if (!t) return familias;
       return familias.filter(
         (f) =>
-          f.documento.includes(t) || f.nome.toLocaleLowerCase().includes(t) || f.rua.toLocaleLowerCase().includes(t),
+          f.documento.includes(t) ||
+          f.nome.toLocaleLowerCase().includes(t) ||
+          f.rua.toLocaleLowerCase().includes(t),
       );
     }),
   );
@@ -77,10 +71,6 @@ export class HomePage {
   redirecionar(nextPage: string): void {
     this.router.navigateByUrl(`${nextPage}`);
   }
-  voltar() {
-    this.location.back();
-  }
-
   filtrarFamilias(event: any) {
     const EventValue = event.target.value?.trim();
     this.termoBusca$.next(EventValue);

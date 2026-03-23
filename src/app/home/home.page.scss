@@ -4,80 +4,29 @@
 }
 
 ion-content.home-content {
-  --background:
-    radial-gradient(900px 500px at 0% -20%, #d9efe2 0%, transparent 62%),
-    linear-gradient(180deg, #f4f8f5 0%, #e8efe9 45%, #dde6df 100%);
-}
-
-.home-toolbar {
-  --background: rgba(255, 255, 255, 0.72);
-  --border-color: transparent;
-  backdrop-filter: blur(10px);
-}
-
-.home-toolbar ion-title {
-  font-weight: 800;
-  color: #12201b;
-}
-
-.home-toolbar ion-button {
-  --color: #12201b;
-}
-
-.home-hero {
-  padding: 12px 16px 4px;
-}
-
-.home-kicker {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #486157;
-  font-weight: 700;
-}
-
-.home-hero h1 {
-  margin: 4px 0 0;
-  font-size: 26px;
-  line-height: 1.15;
-  color: #12201b;
-}
-
-.search-wrap {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  padding: 8px 12px;
-  backdrop-filter: blur(8px);
+  --background: rgba(249 250 251);
 }
 
 ion-searchbar {
-  --background: rgba(255, 255, 255, 0.88);
-  --color: #13221d;
   --placeholder-color: #5c6f67;
-  --border-radius: 16px;
-  --box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  margin-top: 12px;
 }
 
 .familias-list {
   background: transparent;
-  padding: 4px 12px 24px;
-  
+  padding: 16px 12px 24px;
 }
 .familias-list ion-item {
-  --background: transparent;
+  --background: white;
 }
 .familia-card {
-  --background: rgba(255, 255, 255, 0.9);
+  background-color: white;
   --border-radius: 18px;
-  --padding-start: 14px;
   --inner-padding-end: 14px;
   margin-bottom: 10px;
   border: 1px solid rgba(91, 122, 109, 0.18);
-  box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.05),
-    0 10px 24px rgba(15, 23, 42, 0.08);
+  border-radius: 10px;
+
   overflow: hidden;
 }
 
@@ -113,7 +62,7 @@ ion-fab {
 }
 
 ion-fab-button {
-  --background: #12201b;
+  --background: #2563eb;
   --color: #ffffff;
   --box-shadow: 0 12px 24px rgba(18, 32, 27, 0.28);
   margin-bottom: 48px;

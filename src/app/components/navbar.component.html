@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="home-toolbar">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="voltar()" (keydown.enter)="voltar()">
+        <ion-icon name="chevron-back-outline" class="icon-button"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="navbar-content navbar-content--text">
+  <ng-content select="[navbarText]"></ng-content>
+</div>
+
+<div class="navbar-content navbar-content--search">
+  <ng-content select="[navbarSearch]"></ng-content>
+</div>
+  </ion-toolbar>
+</ion-header>
