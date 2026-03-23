@@ -22,5 +22,8 @@ export const routes: Routes = [
     path: 'info-family/:id',
     loadComponent: () => import('./info-family/info-family.page').then( m => m.InfoFamilyPage)
   },
-
+  {
+    path: 'realizar-entrega',
+    loadComponent: () => import('./realizar-entrega/realizar-entrega.page').then( m => m.RealizarEntregaPage)
+  }
 ];

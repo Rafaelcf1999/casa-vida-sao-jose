@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { peopleOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-login',
@@ -15,15 +17,16 @@ export class LoginPage implements OnInit {
   usuario = '';
   senha = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    addIcons({ peopleOutline });
+  }
 
   ngOnInit() { }
 
   fazerLogin() {
     if (this.usuario === 'admin' && this.senha === 'admin') {
-      alert('Login efetuado com sucesso!');
       console.log('Login efetuado com sucesso no Sistema Santa Hedviges!');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']); 
     } else {
       alert('Usuário ou senha incorretos. Tente novamente!');
     }
