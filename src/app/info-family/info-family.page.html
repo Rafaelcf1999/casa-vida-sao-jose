@@ -1,6 +1,13 @@
-<app-navbar>
-  <ion-title navbarText>Detalhes da Família</ion-title>
-</app-navbar>
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #ffffff; --color: #1e293b;">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-weight: 600; font-size: 1.1rem;">
+      Detalhes da Família
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding custom-bg">
   @if (familia) {
