@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { FireBaseService } from '../service/familia.service';
 import {
@@ -20,6 +20,9 @@ import {
   IonIcon,
 } from '@ionic/angular/standalone';
 import { NavbarComponent } from '../components/navbar.component';
+
+import { addIcons } from 'ionicons';
+import { checkmarkOutline, locationOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-info-family',
@@ -49,14 +52,16 @@ import { NavbarComponent } from '../components/navbar.component';
 export class InfoFamilyPage implements OnInit {
   private route = inject(ActivatedRoute);
   private fbService = inject(FireBaseService);
+  private router = inject(Router);
 
   id: string | null = null;
-  familia: any = null; // Aqui ficarão os dados vindos do Firebase
+  familia: any = null; 
 
-  constructor() {}
+  constructor() {
+    addIcons({ checkmarkOutline, locationOutline });
+  }
 
   ngOnInit() {
-    // Pega o ID da URL
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
       this.carregarDados();
@@ -64,12 +69,10 @@ export class InfoFamilyPage implements OnInit {
   }
   async carregarDados() {
     try {
-      // Verificamos se o ID existe antes de chamar o banco
       if (this.id) {
-        // Chamamos o service e aguardamos (await) a resposta
+
         this.familia = await this.fbService.getFamiliaById(this.id);
 
-        // Log para você conferir no console se os dependentes vieram junto
         console.log('Dados da família carregados:', this.familia);
       }
     } catch (error) {
@@ -80,8 +83,6 @@ export class InfoFamilyPage implements OnInit {
   }
 
   realizarEntrega() {
-    console.log('Botão de entrega clicado!');
-    // Por enquanto, só um aviso para testar se funciona
-    alert('Entrega realizada para ' + this.familia?.nome);
+    this.router.navigate(['/realizar-entrega']);
   }
 }

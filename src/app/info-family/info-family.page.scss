@@ -1,99 +1,156 @@
 
 ion-content {
-  --background: #ffffff; 
+  --background: #f4f6f8;; 
 }
 
-ion-list {
+/* Estilo geral dos cartões */
+.custom-card {
   background: #ffffff;
-}
-// Títulos das seções
-ion-list-header {
-  --color: var(--ion-color-primary);
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  letter-spacing: 0.5px;
-}
-ion-item-divider {
-  background-color: #ffffff;
-  --inner-border-width: 0; 
-  --border-width: 0;      
-  border: none;            
-  background: transparent; 
-}
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  overflow: hidden;
 
-ion-item {
-  --background: #f9f9f9; 
-  --color: #515151;
-  --border-radius: 8px;
-  margin-bottom: 8px;
-  
-  h2 {
-    font-weight: 600;
-    color: #333; 
+  .card-header {
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.8px;
+
+    /* Cabeçalho Azul (Residente) */
+    &.blue-header {
+      background: #f0f4ff;
+      color: #2e60ff; 
+    }
+
+    /* Cabeçalho Cinza (Endereço e Dependentes) */
+    &.gray-header {
+      background: #fafafa;
+      color: #333333;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    ion-icon {
+      font-size: 16px;
+      color: #888;
+    }
   }
-  
-  p {
-    color: #666;
+
+  .card-body {
+    padding: 16px;
+
+    &.no-padding {
+      padding: 0;
+    }
   }
-
-  --inner-border-width: 0;
-  --border-width: 0;
 }
 
-ion-card {
-  --background: #f4f4f4; 
-  --color: #333;        
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  margin: 10px 0;
-}
-
-ion-card-title {
-  color: #222;
-  font-weight: 700;
-}
-
-ion-card-subtitle {
-  color: #666;
-}
-// Estilo dos campos de entrada
-.custom-item {
-  --background: #CBCBCB;
-  --color: #515151;
-  --border-radius: 12px;
-  --padding-start: 16px;
+.info-group {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
-  --highlight-height: 0;         
-  --inner-border-width: 0;       
-  --border-width: 0;
-  
-  // Remove a linha padrão do Ionic que fica embaixo
-  &::part(native) {
-    border: none;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .label {
+    font-size: 11px;
+    color: #888888;
+    margin-bottom: 4px;
+  }
+
+  .value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222222;
   }
 }
 
-// Destaque visual para o campo de CEP
-.cep-highlight {
-  border: 1px solid var(--ion-color-primary-shade);
-  --background: #cbcbcb;
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+
+  .info-group {
+    flex: 1;
+    margin-bottom: 0;
+  }
 }
 
-// Botão de finalizar
-.btn-finalizar {
-  margin-top: 32px;
-  height: 54px;
-  --border-radius: 14px;
-  font-weight: 600;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px rgba(var(--ion-color-success-rgb), 0.3);
+/* Tipografia específica do Endereço */
+.address-body {
+  p {
+    margin: 0 0 6px 0;
+    font-size: 13px;
+    color: #444444;
+  }
+
+  .reference {
+    margin-top: 16px;
+    
+    .label {
+      font-size: 12px;
+      font-style: italic;
+      color: #888888;
+    }
+    p {
+      font-size: 12px;
+      color: #666666;
+      margin-top: 2px;
+    }
+  }
 }
 
-// Estilização do Toggle (opcional)
-ion-toggle {
-  --handle-spacing: 4px;
+/* Lista de Dependentes */
+.dependent-item {
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .dep-info {
+    display: flex;
+    flex-direction: column;
+
+    .dep-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 4px;
+    }
+
+    .dep-type {
+      font-size: 12px;
+      color: #888888;
+    }
+  }
+}
+
+/* Botão de Entrega */
+.button-container {
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  .btn-entrega {
+    --border-radius: 8px;
+    --background: #2e60ff; /* Azul da imagem */
+    height: 50px;
+    font-weight: 600;
+    text-transform: none; /* Remove o uppercase padrão do Ionic */
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }
