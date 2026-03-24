@@ -23,7 +23,7 @@ export const routes: Routes = [
     loadComponent: () => import('./info-family/info-family.page').then( m => m.InfoFamilyPage)
   },
   {
-    path: 'realizar-entrega',
+    path: 'realizar-entrega/:id',
     loadComponent: () => import('./realizar-entrega/realizar-entrega.page').then( m => m.RealizarEntregaPage)
   }
 ];

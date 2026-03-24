@@ -74,22 +74,21 @@ export class InfoFamilyPage implements OnInit {
       this.carregarDados();
     }
   }
+  
   async carregarDados() {
     try {
       if (this.id) {
-
         this.familia = await this.fbService.getFamiliaById(this.id);
-
         console.log('Dados da família carregados:', this.familia);
       }
     } catch (error) {
       console.error('Erro ao carregar dados da família:', error);
-
       alert('Erro ao carregar as informações.');
     }
   }
 
   realizarEntrega() {
-    this.router.navigate(['/realizar-entrega']);
+    console.log('Indo para a tela de entrega da família ID:', this.id);
+    this.router.navigate(['/realizar-entrega', this.id]);
   }
 }
