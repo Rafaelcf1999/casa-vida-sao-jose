@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { FireBaseService } from '../service/familia.service';
 import { Router } from '@angular/router';
 import { 
-  IonContent, IonHeader, IonToolbar, 
+  IonContent, IonHeader, IonToolbar,IonTitle, 
   IonButtons, IonBackButton, IonIcon 
 } from '@ionic/angular/standalone';
+import { NavbarComponent } from '../components/navbar.component';
 
 // Importação dos ícones necessários para o botão de voltar e lixeira
 import { addIcons } from 'ionicons';
@@ -18,13 +19,12 @@ import { trashOutline, chevronBackOutline } from 'ionicons/icons';
   styleUrls: ['./tela-de-cadastro.page.scss'],
   standalone: true,
   imports: [
-    IonContent, IonHeader, IonToolbar, 
-    IonButtons, IonBackButton, IonIcon,
+    IonContent, IonHeader, IonToolbar,IonTitle, 
+    IonButtons, IonBackButton, IonIcon,NavbarComponent,
     CommonModule, FormsModule 
   ]
 })
 export class TelaDeCadastroPage implements OnInit {
-
   private firebaseService = inject(FireBaseService);
   private router = inject(Router);
 
@@ -51,14 +51,14 @@ export class TelaDeCadastroPage implements OnInit {
     addIcons({ trashOutline, chevronBackOutline });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   // --- LÓGICA DE DEPENDENTES ---
   addDependente() {
     this.cadastro.dependentes.push({
       nome: '',
       cpf: '',
-      telefone: ''
+      telefone: '',
     });
   }
 

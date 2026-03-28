@@ -1,0 +1,33 @@
+.home-toolbar {
+  --background: white;
+  --border-color: transparent;
+  --min-height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+ion-buttons[slot="start"] {
+  margin: 0;
+  align-self: center;
+}
+
+ion-button {
+  margin: 0;
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+.icon-button {
+  color: black;
+}
+
+.navbar-content--text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-left: 0;
+  padding-left: 0;
+}
