@@ -1,64 +1,217 @@
-
+// --- CONFIGURAÇÕES GERAIS ---
 ion-content {
-  --background: #ffffff; 
+  --background: #f8fafc; // Fundo cinza azulado claro (estilo Tailwind)
 }
 
-ion-list {
-  background: #ffffff;
+.main-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 16px;
 }
-// Títulos das seções
-ion-list-header {
-  --color: var(--ion-color-primary);
-  font-weight: 700;
+
+// --- HEADER ---
+.header-container {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-title {
+  margin: 0 0 0 12px;
   font-size: 1.1rem;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  letter-spacing: 0.5px;
-}
-ion-item-divider {
-  background-color: #ffffff;
-  --inner-border-width: 0; 
-  --border-width: 0;      
-  border: none;            
-  background: transparent; 
+  font-weight: 600;
+  color: #1a202c;
 }
 
-// Estilo dos campos de entrada
-.custom-item {
-  --background: #CBCBCB;
-  --color: #515151;
-  --border-radius: 12px;
-  --padding-start: 16px;
+// --- ESTRUTURA DE SEÇÕES E CARDS ---
+.form-spacing {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
-  --highlight-height: 0;         
-  --inner-border-width: 0;       
-  --border-width: 0;
+.blue-indicator {
+  width: 4px;
+  height: 24px;
+  background-color: #2563eb;
+  border-radius: 99px;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// --- INPUTS E LABELS ---
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  appearance: none;
   
-  // Remove a linha padrão do Ionic que fica embaixo
-  &::part(native) {
-    border: none;
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 }
 
-// Destaque visual para o campo de CEP
-.cep-highlight {
-  border: 1px solid var(--ion-color-primary-shade);
-  --background: #cbcbcb;
+// --- GRIDS DE LAYOUT ---
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.col-3 { grid-column: span 3; }
+.col-1 { grid-column: span 1; }
+
+.cep-container {
+  display: flex;
+  gap: 8px;
 }
 
-// Botão de finalizar
-.btn-finalizar {
-  margin-top: 32px;
-  height: 54px;
-  --border-radius: 14px;
+// --- BOTÃO DE ARRASTAR (SWITCH/TOGGLE) ---
+.toggle-container {
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #f1f5f9;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  input { opacity: 0; width: 0; height: 0; }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1; // Cor desativado
+  transition: .4s;
+  border-radius: 34px;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+}
+
+input:checked + .slider {
+  background-color: #2563eb !important; // Azul ativado
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+// --- DEPENDENTES ---
+.justify-between { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.flex-row { display: flex; flex-direction: row; }
+
+.btn-add-text {
+  background: transparent;
+  color: #2563eb;
+  font-weight: 700;
+  border: none;
+  font-size: 0.9rem;
+}
+
+.dependente-card {
+  border-left: 4px solid #cbd5e1; // Identificador visual lateral
+  margin-bottom: 8px;
+}
+
+.card-header-dep {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dep-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.btn-remove {
+  background: #fee2e2;
+  color: #ef4444;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+}
+
+// --- BOTÕES DE AÇÃO ---
+.btn-search {
+  background: #2563eb;
+  color: white;
+  padding: 0 16px;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px rgba(var(--ion-color-success-rgb), 0.3);
+  border: none;
+  &:active { opacity: 0.8; }
 }
 
-// Estilização do Toggle (opcional)
-ion-toggle {
-  --handle-spacing: 4px;
+.btn-finalizar {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+  margin-top: 10px;
+  &:active { transform: scale(0.98); }
 }
