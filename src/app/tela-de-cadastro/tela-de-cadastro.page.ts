@@ -19,8 +19,7 @@ import { trashOutline, chevronBackOutline } from 'ionicons/icons';
   styleUrls: ['./tela-de-cadastro.page.scss'],
   standalone: true,
   imports: [
-    IonContent, IonHeader, IonToolbar,IonTitle, 
-    IonButtons, IonBackButton, IonIcon,NavbarComponent,
+    IonContent,IonTitle, IonIcon,NavbarComponent,
     CommonModule, FormsModule 
   ]
 })
