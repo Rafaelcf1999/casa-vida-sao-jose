@@ -10,7 +10,7 @@ import {
   IonFab,
 } from '@ionic/angular/standalone';
 import { FireBaseService } from '../service/familia.service';
-import { AsyncPipe, Location } from '@angular/common';
+import { AsyncPipe,CommonModule, Location } from '@angular/common';
 
 import { addIcons } from 'ionicons';
 import { add, arrowBack } from 'ionicons/icons';
