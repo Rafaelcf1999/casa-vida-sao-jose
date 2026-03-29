@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Dialog } from '@capacitor/dialog';
 import { FireBaseService } from '../service/familia.service';
 import { NavbarComponent } from "../components/navbar.component";
 
@@ -19,9 +20,9 @@ export class RealizarEntregaPage implements OnInit {
   observacoes: string = '';
   familiaId: string | null = null; 
 
-  private router = inject(Router);
-  private route = inject(ActivatedRoute);
-  private fbService = inject(FireBaseService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly fbService = inject(FireBaseService);
 
   constructor() { }
 
@@ -34,7 +35,10 @@ export class RealizarEntregaPage implements OnInit {
 
   async confirmarRegistro() {
     if (!this.familiaId) {
-      alert('Erro: Família não identificada. Volte e tente novamente.');
+      await Dialog.alert({
+        title: 'Erro',
+        message: 'Família não identificada. Volte e tente novamente.',
+      });
       return;
     }
 
@@ -48,14 +52,20 @@ export class RealizarEntregaPage implements OnInit {
 
     try {
       await this.fbService.addEntrega(dadosEntrega);
-      
-      alert('Registro de entrega salvo com sucesso no banco de dados!');
+
+      await Dialog.alert({
+        title: 'Sucesso',
+        message: 'Registro de entrega salvo com sucesso no banco de dados!',
+      });
       console.log('Dados salvos no Firebase:', dadosEntrega);
-      
+
       this.router.navigate(['/home']);
     } catch (error) {
       console.error('Erro ao salvar:', error);
-      alert('Erro ao salvar a entrega. Verifique sua conexão com a internet.');
+      await Dialog.alert({
+        title: 'Erro',
+        message: 'Erro ao salvar a entrega. Verifique sua conexão com a internet.',
+      });
     }
   }
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Dialog } from '@capacitor/dialog';
 import { addIcons } from 'ionicons';
 import { peopleOutline } from 'ionicons/icons';
 
@@ -13,22 +14,23 @@ import { peopleOutline } from 'ionicons/icons';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   usuario = '';
   senha = '';
 
-  constructor(private router: Router) { 
+  constructor(private readonly router: Router) { 
     addIcons({ peopleOutline });
   }
 
-  ngOnInit() { }
-
-  fazerLogin() {
+  async fazerLogin() {
     if (this.usuario === 'admin' && this.senha === 'admin') {
       console.log('Login efetuado com sucesso no Sistema Santa Hedviges!');
       this.router.navigate(['/home']); 
     } else {
-      alert('Usuário ou senha incorretos. Tente novamente!');
+      await Dialog.alert({
+        title: 'Aviso',
+        message: 'Usuário ou senha incorretos. Tente novamente!',
+      });
     }
   }
 }

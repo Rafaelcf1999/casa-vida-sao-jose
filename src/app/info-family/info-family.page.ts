@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Dialog } from '@capacitor/dialog';
 
 import { FireBaseService } from '../service/familia.service';
 import {
@@ -33,9 +34,9 @@ import { checkmarkOutline, locationOutline } from 'ionicons/icons';
   ],
 })
 export class InfoFamilyPage implements OnInit {
-  private route = inject(ActivatedRoute);
-  private fbService = inject(FireBaseService);
-  private router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly fbService = inject(FireBaseService);
+  private readonly router = inject(Router);
 
   id: string | null = null;
   familia: any = null;
@@ -59,7 +60,10 @@ export class InfoFamilyPage implements OnInit {
       }
     } catch (error) {
       console.error('Erro ao carregar dados da família:', error);
-      alert('Erro ao carregar as informações.');
+      await Dialog.alert({
+        title: 'Erro',
+        message: 'Erro ao carregar as informações.',
+      });
     }
   }
 
