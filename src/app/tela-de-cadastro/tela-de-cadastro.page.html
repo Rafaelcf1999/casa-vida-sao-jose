@@ -5,8 +5,6 @@
 <ion-content>
   <div class="main-container">
     <form class="form-spacing">
-      
-      <!-- SEÇÃO 1: MORADOR PRINCIPAL -->
       <section class="form-section">
         <div class="section-header">
           <div class="blue-indicator"></div>
@@ -16,32 +14,52 @@
         <div class="card">
           <div class="input-group">
             <label class="input-label">Nome Completo</label>
-            <input type="text" [(ngModel)]="cadastro.nome" name="nome" class="custom-input" placeholder="Ex: João Silva">
+            <input
+              type="text"
+              [(ngModel)]="cadastro.nome"
+              name="nome"
+              class="custom-input"
+              placeholder="Ex: João Silva"
+            />
           </div>
 
           <div class="grid-2">
             <div class="input-group">
               <label class="input-label">Telefone</label>
-              <input type="tel" [(ngModel)]="cadastro.telefone" name="telefone" class="custom-input" placeholder="(00) 00000-0000">
+              <input
+                type="tel"
+                [(ngModel)]="cadastro.telefone"
+                name="telefone"
+                class="custom-input"
+                placeholder="(00) 00000-0000"
+              />
             </div>
             <div class="input-group">
               <label class="input-label">CPF</label>
-              <input type="text" [(ngModel)]="cadastro.documento" name="documento" class="custom-input" placeholder="000.000.000-00">
+              <input
+                type="text"
+                [(ngModel)]="cadastro.documento"
+                name="documento"
+                class="custom-input"
+                placeholder="000.000.000-00"
+              />
             </div>
           </div>
 
-          <!-- BOTÃO DE ARRASTAR (SWITCH) -->
           <div class="input-group toggle-container">
             <label class="input-label">Cadastrado em algum curso?</label>
             <label class="switch">
-              <input type="checkbox" [(ngModel)]="cadastro.cursoCadastrado" name="cursoCadastrado">
+              <input
+                type="checkbox"
+                [(ngModel)]="cadastro.cursoCadastrado"
+                name="cursoCadastrado"
+              />
               <span class="slider"></span>
             </label>
           </div>
         </div>
       </section>
 
-      <!-- SEÇÃO 2: ENDEREÇO -->
       <section class="form-section">
         <div class="section-header">
           <div class="blue-indicator"></div>
@@ -52,78 +70,133 @@
           <div class="input-group">
             <label class="input-label">CEP</label>
             <div class="cep-container">
-              <input type="text" [(ngModel)]="cadastro.cep" name="cep" class="custom-input" placeholder="00000-000">
-              <button type="button" (click)="buscarCEP()" class="btn-search">Buscar</button>
+              <input
+                type="text"
+                [(ngModel)]="cadastro.cep"
+                name="cep"
+                class="custom-input"
+                placeholder="00000-000"
+              />
+              <button type="button" (click)="buscarCEP()" class="btn-search">
+                Buscar
+              </button>
             </div>
           </div>
 
           <div class="grid-4">
             <div class="col-3 input-group">
               <label class="input-label">Rua</label>
-              <input type="text" [(ngModel)]="cadastro.rua" name="rua" class="custom-input">
+              <input
+                type="text"
+                [(ngModel)]="cadastro.rua"
+                name="rua"
+                class="custom-input"
+              />
             </div>
             <div class="col-1 input-group">
               <label class="input-label">Nº</label>
-              <input type="number" [(ngModel)]="cadastro.numero" name="numero" class="custom-input">
+              <input
+                type="number"
+                [(ngModel)]="cadastro.numero"
+                name="numero"
+                class="custom-input"
+              />
             </div>
           </div>
 
           <div class="input-group">
             <label class="input-label">Bairro</label>
-            <input type="text" [(ngModel)]="cadastro.bairro" name="bairro" class="custom-input">
+            <input
+              type="text"
+              [(ngModel)]="cadastro.bairro"
+              name="bairro"
+              class="custom-input"
+            />
           </div>
 
           <div class="grid-2">
             <div class="input-group">
               <label class="input-label">Cidade</label>
-              <input type="text" [(ngModel)]="cadastro.cidade" name="cidade" class="custom-input">
+              <input
+                type="text"
+                [(ngModel)]="cadastro.cidade"
+                name="cidade"
+                class="custom-input"
+              />
             </div>
             <div class="input-group">
               <label class="input-label">Estado (UF)</label>
-              <input type="text" [(ngModel)]="cadastro.estado" name="estado" class="custom-input" maxlength="2">
+              <input
+                type="text"
+                [(ngModel)]="cadastro.estado"
+                name="estado"
+                class="custom-input"
+                maxlength="2"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SEÇÃO 3: DEPENDENTES -->
       <section class="form-section">
         <div class="section-header justify-between">
           <div class="flex-row items-center gap-2">
             <div class="blue-indicator"></div>
             <h2 class="section-title">Dependentes</h2>
           </div>
-          <button type="button" (click)="addDependente()" class="btn-add-text">+ Adicionar</button>
+          <button type="button" (click)="addDependente()" class="btn-add-text">
+            + Adicionar
+          </button>
         </div>
 
-        <!-- LISTA DINÂMICA -->
-        <div *ngFor="let dep of cadastro.dependentes; let i = index" class="card dependente-card">
+        <div
+          *ngFor="let dep of cadastro.dependentes; let i = index"
+          class="card dependente-card"
+        >
           <div class="card-header-dep">
             <span class="dep-count">Dependente #{{ i + 1 }}</span>
-            <button type="button" (click)="removeDependente(i)" class="btn-remove">
+            <button
+              type="button"
+              (click)="removeDependente(i)"
+              class="btn-remove"
+            >
               <ion-icon name="trash-outline"></ion-icon>
             </button>
           </div>
 
           <div class="input-group">
             <label class="input-label">Nome do Dependente</label>
-            <input type="text" [(ngModel)]="dep.nome" [name]="'dep_nome_' + i" class="custom-input">
+            <input
+              type="text"
+              [(ngModel)]="dep.nome"
+              [name]="'dep_nome_' + i"
+              class="custom-input"
+            />
           </div>
 
           <div class="grid-2">
             <div class="input-group">
               <label class="input-label">CPF</label>
-              <input type="text" [(ngModel)]="dep.cpf" [name]="'dep_cpf_' + i" class="custom-input">
+              <input
+                type="text"
+                [(ngModel)]="dep.cpf"
+                [name]="'dep_cpf_' + i"
+                class="custom-input"
+              />
             </div>
             <div class="input-group">
               <label class="input-label">Telefone</label>
-              <input type="tel" [(ngModel)]="dep.telefone" [name]="'dep_tel_' + i" class="custom-input">
+              <input
+                type="tel"
+                [(ngModel)]="dep.telefone"
+                [name]="'dep_tel_' + i"
+                class="custom-input"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- BOTÃO FINALIZAR -->
       <div class="button-footer">
         <button type="button" (click)="salvar()" class="btn-finalizar">
           FINALIZAR CADASTRO

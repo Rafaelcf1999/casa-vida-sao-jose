@@ -1,33 +1,41 @@
 <ion-content class="custom-bg">
   <div class="main-container">
-
     <div class="header-section">
       <div class="logo-box">
-        <ion-icon name="people-outline"></ion-icon> 
+        <ion-icon name="people-outline"></ion-icon>
       </div>
       <h1 class="title">Santa Hedviges</h1>
       <p class="subtitle">Bem-vindo ao sistema de gerenciamento</p>
     </div>
 
     <div class="form-section">
-      
       <div class="input-group">
         <label>Usuário</label>
-        <input type="text" name="usuario" placeholder="Digite seu usuário" [(ngModel)]="usuario" class="custom-input">
+        <input
+          type="text"
+          name="usuario"
+          placeholder="Digite seu usuário"
+          [(ngModel)]="usuario"
+          class="custom-input"
+        />
       </div>
 
       <div class="input-group">
         <label>Senha</label>
-        <input type="password" name="senha" placeholder="Digite sua senha" [(ngModel)]="senha" class="custom-input">
+        <input
+          type="password"
+          name="senha"
+          placeholder="Digite sua senha"
+          [(ngModel)]="senha"
+          class="custom-input"
+        />
       </div>
 
       <button class="btn-entrar" (click)="fazerLogin()">Entrar</button>
-
     </div>
 
     <div class="footer-section">
       <p class="copyright">© 2026 Sistema de Gestão Social</p>
     </div>
-
   </div>
 </ion-content>

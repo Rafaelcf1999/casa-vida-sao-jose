@@ -87,7 +87,7 @@ ion-content {
   font-size: 0.95rem;
   box-sizing: border-box;
   appearance: none;
-  
+
   &:focus {
     outline: none;
     border-color: #2563eb;
@@ -96,17 +96,28 @@ ion-content {
 }
 
 // --- GRIDS DE LAYOUT ---
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.col-3 { grid-column: span 3; }
-.col-1 { grid-column: span 1; }
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.col-3 {
+  grid-column: span 3;
+}
+.col-1 {
+  grid-column: span 1;
+}
 
 .cep-container {
   display: flex;
   gap: 8px;
 }
 
-// --- BOTÃO DE ARRASTAR (SWITCH/TOGGLE) ---
 .toggle-container {
   flex-direction: row !important;
   justify-content: space-between;
@@ -120,15 +131,22 @@ ion-content {
   display: inline-block;
   width: 44px;
   height: 24px;
-  input { opacity: 0; width: 0; height: 0; }
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 }
 
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #cbd5e1; // Cor desativado
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 34px;
 
   &:before {
@@ -136,11 +154,12 @@ ion-content {
     content: "";
     height: 18px;
     width: 18px;
-    left: 3px; bottom: 3px;
+    left: 3px;
+    bottom: 3px;
     background-color: white;
-    transition: .4s;
+    transition: 0.4s;
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -153,8 +172,16 @@ input:checked + .slider:before {
 }
 
 // --- DEPENDENTES ---
-.justify-between { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-.flex-row { display: flex; flex-direction: row; }
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
 
 .btn-add-text {
   background: transparent;
@@ -165,7 +192,7 @@ input:checked + .slider:before {
 }
 
 .dependente-card {
-  border-left: 4px solid #cbd5e1; // Identificador visual lateral
+  border-left: 4px solid #cbd5e1;
   margin-bottom: 8px;
 }
 
@@ -191,7 +218,6 @@ input:checked + .slider:before {
   display: flex;
 }
 
-// --- BOTÕES DE AÇÃO ---
 .btn-search {
   background: #2563eb;
   color: white;
@@ -199,7 +225,9 @@ input:checked + .slider:before {
   border-radius: 8px;
   font-weight: 600;
   border: none;
-  &:active { opacity: 0.8; }
+  &:active {
+    opacity: 0.8;
+  }
 }
 
 .btn-finalizar {
@@ -213,5 +241,7 @@ input:checked + .slider:before {
   border: none;
   box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
   margin-top: 10px;
-  &:active { transform: scale(0.98); }
+  &:active {
+    transform: scale(0.98);
+  }
 }
