@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiKey: '', // retirada por segurança
+  apiKey: '', // retirada por segurança professor
   authDomain: 'casa-vida-71a3f.firebaseapp.com',
   projectId: 'casa-vida-71a3f',
   storageBucket: 'casa-vida-71a3f.firebasestorage.app',
