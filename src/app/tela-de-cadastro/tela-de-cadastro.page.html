@@ -3,135 +3,209 @@
 </app-navbar>
 
 <ion-content class="ion-padding">
-  <!-- Dados do Responsável -->
   <ion-list-header>
     <ion-label>Dados do Responsável</ion-label>
   </ion-list-header>
 
   <ion-item class="custom-item">
-    <ion-input label="Nome Completo" label-placement="floating" type="text" [(ngModel)]="cadastro.nome">
+    <ion-input
+      label="Nome Completo"
+      label-placement="floating"
+      type="text"
+      [(ngModel)]="cadastro.nome"
+    >
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input label="CPF" label-placement="floating" type="text" placeholder="000.000.000-00" maxlength="14"
-      [(ngModel)]="cadastro.documento">
+    <ion-input
+      label="CPF"
+      label-placement="floating"
+      type="text"
+      placeholder="000.000.000-00"
+      maxlength="14"
+      [(ngModel)]="cadastro.documento"
+    >
     </ion-input>
   </ion-item>
 
-   <ion-item class="custom-item">
-    <ion-input label="Renda Familiar" label-placement="floating" type="number" [(ngModel)]="cadastro.rendaFamiliar">
+  <ion-item class="custom-item">
+    <ion-input
+      label="Renda Familiar"
+      label-placement="floating"
+      type="number"
+      [(ngModel)]="cadastro.rendaFamiliar"
+    >
     </ion-input>
   </ion-item>
 
-   <ion-item class="custom-item">
-  <ion-label>Curso Cadastrado?</ion-label>
-  <ion-toggle 
-    slot="end" 
-    [(ngModel)]="cadastro.cursoCadastrado">
-  </ion-toggle>
-</ion-item>
+  <ion-item class="custom-item">
+    <ion-label>Curso Cadastrado?</ion-label>
+    <ion-toggle slot="end" [(ngModel)]="cadastro.cursoCadastrado"> </ion-toggle>
+  </ion-item>
 
-  <!-- Endereço -->
   <ion-list-header>
     <ion-label>Endereço</ion-label>
   </ion-list-header>
 
   <ion-item class="custom-item cep-highlight">
-    <ion-input label="CEP" label-placement="floating" type="text" placeholder="Digite para buscar" maxlength="9"
-      (ionBlur)="buscarCEP()" [(ngModel)]="cadastro.cep">
+    <ion-input
+      label="CEP"
+      label-placement="floating"
+      type="text"
+      placeholder="Digite para buscar"
+      maxlength="9"
+      (ionBlur)="buscarCEP()"
+      [(ngModel)]="cadastro.cep"
+    >
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input label="Logradouro (Rua/Av)" label-placement="floating" type="text" [(ngModel)]="cadastro.rua">
+    <ion-input
+      label="Logradouro (Rua/Av)"
+      label-placement="floating"
+      type="text"
+      [(ngModel)]="cadastro.rua"
+    >
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input label="Número" label-placement="floating" type="number" [(ngModel)]="cadastro.numero">
+    <ion-input
+      label="Número"
+      label-placement="floating"
+      type="number"
+      [(ngModel)]="cadastro.numero"
+    >
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input label="Bairro" label-placement="floating" type="text" [(ngModel)]="cadastro.bairro">
+    <ion-input
+      label="Bairro"
+      label-placement="floating"
+      type="text"
+      [(ngModel)]="cadastro.bairro"
+    >
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input label="Cidade" label-placement="floating" type="text" [(ngModel)]="cadastro.cidade">
+    <ion-input
+      label="Cidade"
+      label-placement="floating"
+      type="text"
+      [(ngModel)]="cadastro.cidade"
+    >
     </ion-input>
   </ion-item>
 
   <ion-item class="custom-item">
-    <ion-input label="Estado" label-placement="floating" type="text" [(ngModel)]="cadastro.estado">
+    <ion-input
+      label="Estado"
+      label-placement="floating"
+      type="text"
+      [(ngModel)]="cadastro.estado"
+    >
     </ion-input>
   </ion-item>
 
-  <!-- Composição Familiar -->
   <ion-list-header>
     <ion-label>Dependentes</ion-label>
   </ion-list-header>
 
- @for (dep of cadastro.dependentes; track $index) {
-    <div class="dependente-container">
-      <ion-item-divider>
-        <ion-label>Dependente {{ $index + 1 }}</ion-label>
-      </ion-item-divider>
+  @for (dep of cadastro.dependentes; track $index) {
+  <div class="dependente-container">
+    <ion-item-divider>
+      <ion-label>Dependente {{ $index + 1 }}</ion-label>
+    </ion-item-divider>
 
-      <ion-item class="custom-item">
-        <ion-select 
-          label="Parentesco" 
-          label-placement="floating" 
-          placeholder="Selecione"
-          [(ngModel)]="dep.tipo"> 
-          <ion-select-option value="Cônjuge">Cônjuge</ion-select-option>
-          <ion-select-option value="Filho(a)">Filho(a)</ion-select-option>
-          <ion-select-option value="Outro">Outro</ion-select-option>
-        </ion-select>
-      </ion-item>
+    <ion-item class="custom-item">
+      <ion-select
+        label="Parentesco"
+        label-placement="floating"
+        placeholder="Selecione"
+        [(ngModel)]="dep.tipo"
+      >
+        <ion-select-option value="Cônjuge">Cônjuge</ion-select-option>
+        <ion-select-option value="Filho(a)">Filho(a)</ion-select-option>
+        <ion-select-option value="Outro">Outro</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-      @if (dep.tipo === 'Outro') {
-        <ion-item class="custom-item">
-          <ion-input 
-            label="Especifique o parentesco" 
-            label-placement="floating" 
-            type="text" 
-            [(ngModel)]="dep.tipoOutro">
-          </ion-input>
-        </ion-item>
-      }
+    @if (dep.tipo === 'Outro') {
+    <ion-item class="custom-item">
+      <ion-input
+        label="Especifique o parentesco"
+        label-placement="floating"
+        type="text"
+        [(ngModel)]="dep.tipoOutro"
+      >
+      </ion-input>
+    </ion-item>
+    }
 
-      <ion-item class="custom-item">
-        <ion-input label="Nome" label-placement="floating" type="text" [(ngModel)]="dep.nome">
-        </ion-input>
-      </ion-item>
+    <ion-item class="custom-item">
+      <ion-input
+        label="Nome"
+        label-placement="floating"
+        type="text"
+        [(ngModel)]="dep.nome"
+      >
+      </ion-input>
+    </ion-item>
 
-      <ion-item class="custom-item">
-        <ion-input label="CPF" label-placement="floating" type="text" placeholder="000.000.000-00" [(ngModel)]="dep.cpf">
-        </ion-input>
-      </ion-item>
+    <ion-item class="custom-item">
+      <ion-input
+        label="CPF"
+        label-placement="floating"
+        type="text"
+        placeholder="000.000.000-00"
+        [(ngModel)]="dep.cpf"
+      >
+      </ion-input>
+    </ion-item>
 
-      <ion-item class="custom-item">
-        <ion-input label="Telefone" label-placement="floating" type="tel" placeholder="(00) 00000-0000" [(ngModel)]="dep.telefone">
-        </ion-input>
-      </ion-item>
+    <ion-item class="custom-item">
+      <ion-input
+        label="Telefone"
+        label-placement="floating"
+        type="tel"
+        placeholder="(00) 00000-0000"
+        [(ngModel)]="dep.telefone"
+      >
+      </ion-input>
+    </ion-item>
 
-      <div class="remover-container">
-      <ion-button fill="clear" color="danger" (click)="removeDependente($index)">
+    <div class="remover-container">
+      <ion-button
+        fill="clear"
+        color="danger"
+        (click)="removeDependente($index)"
+      >
         <ion-icon name="remove-circle-outline" slot="start"></ion-icon>
         Remover este dependente
       </ion-button>
     </div>
-      
-    </div>
+  </div>
   }
 
-  <ion-button expand="block" fill="outline" (click)="addDependente()" class="ion-margin-top">
+  <ion-button
+    expand="block"
+    fill="outline"
+    (click)="addDependente()"
+    class="ion-margin-top"
+  >
     <ion-icon name="add-outline" slot="start"></ion-icon>
     Adicionar Dependente
   </ion-button>
-  <ion-button expand="block" color="success" class="btn-finalizar" (click)="salvar()">
+  <ion-button
+    expand="block"
+    color="success"
+    class="btn-finalizar"
+    (click)="salvar()"
+  >
     Finalizar Cadastro
   </ion-button>
 </ion-content>

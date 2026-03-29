@@ -1,88 +1,84 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar style="--background: #ffffff; --color: #1e293b;">
-    <ion-buttons slot="start">
-      <ion-back-button text="" defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title style="font-weight: 600; font-size: 1.1rem;">
-      Detalhes da Família
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-navbar>
+  <ion-title navbarText>Cadastro de Família</ion-title>
+</app-navbar>
 
 <ion-content class="ion-padding custom-bg">
   @if (familia) {
-    
-    <div class="custom-card">
-      <div class="card-header blue-header">
-        RESIDENTE PRINCIPAL
+
+  <div class="custom-card">
+    <div class="card-header blue-header">RESIDENTE PRINCIPAL</div>
+    <div class="card-body">
+      <div class="info-group">
+        <span class="label">Nome Completo</span>
+        <span class="value">{{ familia.nome }}</span>
       </div>
-      <div class="card-body">
+      <div class="info-row">
         <div class="info-group">
-          <span class="label">Nome Completo</span>
-          <span class="value">{{ familia.nome }}</span>
+          <span class="label">CPF</span>
+          <span class="value">{{ familia.documento }}</span>
         </div>
-        <div class="info-row">
-          <div class="info-group">
-            <span class="label">CPF</span>
-            <span class="value">{{ familia.documento }}</span>
-          </div>
-          <div class="info-group">
-            <span class="label">Telefone</span>
-            <span class="value">{{ familia.telefone || '(Não informado)' }}</span>
-          </div>
+        <div class="info-group">
+          <span class="label">Telefone</span>
+          <span class="value">{{ familia.telefone || '(Não informado)' }}</span>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="custom-card">
-      <div class="card-header gray-header">
-        <ion-icon name="location-outline"></ion-icon>
-        ENDEREÇO
-      </div>
-      <div class="card-body address-body">
-        <p>
-          {{ familia.rua }}, {{ familia.numero }} 
-          @if (familia.complemento) { - {{ familia.complemento }} }
-        </p>
-        <p>{{ familia.bairro }}</p>
-        <p>{{ familia.cidade || 'São Paulo' }} - {{ familia.estado || 'SP' }}</p>
-        <p>CEP: {{ familia.cep || '01234-567' }}</p>
-        
-        @if (familia.pontoReferencia) {
-          <div class="reference">
-            <span class="label">Ponto de Referência:</span>
-            <p>{{ familia.pontoReferencia }}</p>
-          </div>
-        }
-      </div>
+  <div class="custom-card">
+    <div class="card-header gray-header">
+      <ion-icon name="location-outline"></ion-icon>
+      ENDEREÇO
     </div>
+    <div class="card-body address-body">
+      <p>
+        {{ familia.rua }}, {{ familia.numero }} @if (familia.complemento) { - {{
+        familia.complemento }} }
+      </p>
+      <p>{{ familia.bairro }}</p>
+      <p>{{ familia.cidade || 'São Paulo' }} - {{ familia.estado || 'SP' }}</p>
+      <p>CEP: {{ familia.cep || '01234-567' }}</p>
 
-    <div class="custom-card">
-      <div class="card-header gray-header">
-        DEPENDENTES ({{ familia.dependentes?.length || 0 }})
+      @if (familia.pontoReferencia) {
+      <div class="reference">
+        <span class="label">Ponto de Referência:</span>
+        <p>{{ familia.pontoReferencia }}</p>
       </div>
-      <div class="card-body no-padding">
-        @for (dep of familia.dependentes; track $index) {
-          <div class="dependent-item">
-            <div class="dep-info">
-              <span class="dep-name">{{ dep.nome }}</span>
-              <span class="dep-type">{{ dep.tipo }}</span>
-            </div>
-          </div>
-        }
-      </div>
+      }
     </div>
+  </div>
 
-    <div class="button-container">
-      <ion-button expand="block" color="primary" class="btn-entrega" (click)="realizarEntrega()">
-        <ion-icon name="checkmark-outline" slot="start"></ion-icon>
-        Realizar Entrega
-      </ion-button>
+  <div class="custom-card">
+    <div class="card-header gray-header">
+      DEPENDENTES ({{ familia.dependentes?.length || 0 }})
     </div>
+    <div class="card-body no-padding">
+      @for (dep of familia.dependentes; track $index) {
+      <div class="dependent-item">
+        <div class="dep-info">
+          <span class="dep-name">{{ dep.nome }}</span>
+          <span class="dep-type">{{ dep.tipo }}</span>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="button-container">
+    <ion-button
+      expand="block"
+      color="primary"
+      class="btn-entrega"
+      (click)="realizarEntrega()"
+    >
+      <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+      Realizar Entrega
+    </ion-button>
+  </div>
 
   } @else {
-    <div class="spinner-container">
-      <ion-spinner color="primary"></ion-spinner>
-    </div>
+  <div class="spinner-container">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
   }
 </ion-content>

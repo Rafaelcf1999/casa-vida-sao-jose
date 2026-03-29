@@ -46,7 +46,6 @@ export class TelaDeCadastroPage implements OnInit {
   private firebaseService = inject(FireBaseService);
   private router = inject(Router);
 
-  // Objeto que armazena os dados do formulário
   cadastro = {
     nome: '',
     telefone: '',
@@ -77,14 +76,12 @@ export class TelaDeCadastroPage implements OnInit {
       telefone: '',
     });
   }
-  // Função para buscar o endereço automaticamente pelo CEP
+
   async buscarCEP() {
-    // 1. Limpa o CEP para ter apenas números
     const cepLimpo = this.cadastro.cep.replace(/\D/g, '');
 
     if (cepLimpo.length === 8) {
       try {
-        // 2. CORREÇÃO DA URL: Precisa das crases ( ` ) e do caminho /ws/
         const url = `https://viacep.com.br/ws/${cepLimpo}/json/`;
 
         const resposta = await fetch(url);

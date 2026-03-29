@@ -1,5 +1,10 @@
 import { inject, Injectable } from '@angular/core';
-import { collectionData, Firestore, collection, addDoc } from '@angular/fire/firestore';
+import {
+  collectionData,
+  Firestore,
+  collection,
+  addDoc,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Familia } from '../home/types';
 import { doc, getDoc } from '@angular/fire/firestore';
@@ -21,10 +26,10 @@ export class FireBaseService {
     const colRef = collection(this.firestore, 'familia');
     try {
       const docRef = await addDoc(colRef, dadosDaFamilia);
-      console.log("Documento salvo com sucesso! ID:", docRef.id);
+      console.log('Documento salvo com sucesso! ID:', docRef.id);
       return docRef;
     } catch (e) {
-      console.error("Erro ao salvar no Firebase:", e);
+      console.error('Erro ao salvar no Firebase:', e);
       throw e;
     }
   }

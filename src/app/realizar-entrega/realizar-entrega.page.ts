@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FireBaseService } from '../service/familia.service';
+import { NavbarComponent } from "../components/navbar.component";
 
 @Component({
   selector: 'app-realizar-entrega',
   templateUrl: './realizar-entrega.page.html',
   styleUrls: ['./realizar-entrega.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent],
 })
 export class RealizarEntregaPage implements OnInit {
   dataEntrega: string = '';

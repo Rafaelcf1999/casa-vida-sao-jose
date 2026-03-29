@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule, CurrencyPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,18 +8,6 @@ import {
   IonContent,
   IonTitle,
   IonSpinner,
-  IonCard,
-  IonHeader,      
-  IonToolbar,    
-  IonButtons,     
-  IonBackButton,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonCardContent,
-  IonListHeader,
-  IonItem,
-  IonLabel,
   IonButton,
   IonIcon,
 } from '@ionic/angular/standalone';
@@ -37,23 +25,11 @@ import { checkmarkOutline, locationOutline } from 'ionicons/icons';
     IonContent,
     IonTitle,
     IonSpinner,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
-    IonListHeader,
-    IonItem,
-    IonHeader,
-    IonToolbar,
-    IonButtons,
-    IonBackButton,
-    IonLabel,
     CommonModule,
     IonButton,
     IonIcon,
     FormsModule,
-    CurrencyPipe,
+    NavbarComponent,
   ],
 })
 export class InfoFamilyPage implements OnInit {
@@ -62,7 +38,7 @@ export class InfoFamilyPage implements OnInit {
   private router = inject(Router);
 
   id: string | null = null;
-  familia: any = null; 
+  familia: any = null;
 
   constructor() {
     addIcons({ checkmarkOutline, locationOutline });

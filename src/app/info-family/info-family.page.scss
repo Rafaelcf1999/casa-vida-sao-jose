@@ -1,9 +1,7 @@
-
 ion-content {
-  --background: #f4f6f8;; 
+  --background: #f4f6f8;
 }
 
-/* Estilo geral dos cartões */
 .custom-card {
   background: #ffffff;
   border: 1px solid #e8e8e8;
@@ -20,19 +18,17 @@ ion-content {
     gap: 8px;
     letter-spacing: 0.8px;
 
-    /* Cabeçalho Azul (Residente) */
     &.blue-header {
       background: #f0f4ff;
-      color: #2e60ff; 
+      color: #2e60ff;
     }
 
-    /* Cabeçalho Cinza (Endereço e Dependentes) */
     &.gray-header {
       background: #fafafa;
       color: #333333;
       border-bottom: 1px solid #f0f0f0;
     }
-    
+
     ion-icon {
       font-size: 16px;
       color: #888;
@@ -81,7 +77,6 @@ ion-content {
   }
 }
 
-/* Tipografia específica do Endereço */
 .address-body {
   p {
     margin: 0 0 6px 0;
@@ -91,7 +86,7 @@ ion-content {
 
   .reference {
     margin-top: 16px;
-    
+
     .label {
       font-size: 12px;
       font-style: italic;
@@ -105,7 +100,6 @@ ion-content {
   }
 }
 
-/* Lista de Dependentes */
 .dependent-item {
   padding: 16px;
   border-bottom: 1px solid #f0f0f0;
@@ -132,17 +126,16 @@ ion-content {
   }
 }
 
-/* Botão de Entrega */
 .button-container {
   margin-top: 24px;
   margin-bottom: 24px;
 
   .btn-entrega {
     --border-radius: 8px;
-    --background: #2e60ff; /* Azul da imagem */
+    --background: #2e60ff;
     height: 50px;
     font-weight: 600;
-    text-transform: none; /* Remove o uppercase padrão do Ionic */
+    text-transform: none;
     font-size: 16px;
     letter-spacing: 0.5px;
   }
