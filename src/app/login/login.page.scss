@@ -82,11 +82,10 @@
 
   &:focus {
     border-color: #0284c7;
-    box-shadow: 0 0 0 3px #e0f2fe; /* Efeito de brilho ao clicar */
+    box-shadow: 0 0 0 3px #e0f2fe;
   }
 }
 
-/* Links e Botão */
 .forgot-password {
   display: flex;
   justify-content: flex-end;
@@ -120,7 +119,6 @@
   }
 }
 
-/* Rodapé */
 .footer-section {
   margin-top: 48px;
   text-align: center;
